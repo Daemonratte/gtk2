@@ -839,6 +839,10 @@ bin_PROGRAMS =
 
 bin_SCRIPTS =
 
+gtk_update_icon_cache_DEPENDENCIES = $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
+gtk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS) $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
+gtk_update_icon_cache_SOURCES = updateiconcache.c 
+
 .PHONY: files test test-debug
 
 files:
@@ -1140,7 +1144,10 @@ stamp-icons: $(STOCK_ICONS)
 	&& touch stamp-icons
 
 gtkbuiltincache.h: @REBUILD@ stamp-icons
-
+	$(GTK_UPDATE_ICON_CACHE) --force --ignore-theme-index		\
+	   --include-image-data							\
+	   --source builtin_icons stock-icons > gtkbuiltincache.h.tmp &&        \
+	mv gtkbuiltincache.h.tmp gtkbuiltincache.h
 
 EXTRA_DIST +=                   \
 	$(STOCK_ICONS)		\
