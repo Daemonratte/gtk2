@@ -32,6 +32,7 @@
 #include "gtkdnd.h"
 #include "gtkmain.h"
 #include "gtkintl.h"
+#include "gtkaccessible.h"
 #include "gtkwindow.h"
 #include "gtkentry.h"
 #include "gtkcombobox.h"
@@ -260,6 +261,8 @@ static gboolean         gtk_icon_view_key_press                 (GtkWidget      
 								 GdkEventKey        *event);
 static gboolean         gtk_icon_view_key_release               (GtkWidget          *widget,
 								 GdkEventKey        *event);
+static void       *gtk_icon_view_get_accessible            (GtkWidget          *widget);
+
 
 /* GtkContainer vfuncs */
 static void             gtk_icon_view_remove                    (GtkContainer       *container,
@@ -498,7 +501,7 @@ gtk_icon_view_class_init (GtkIconViewClass *klass)
   widget_class->realize = gtk_icon_view_realize;
   widget_class->unrealize = gtk_icon_view_unrealize;
   widget_class->style_set = gtk_icon_view_style_set;
-  widget_class->get_accessible = NULL;
+  widget_class->get_accessible = gtk_icon_view_get_accessible;
   widget_class->size_request = gtk_icon_view_size_request;
   widget_class->size_allocate = gtk_icon_view_size_allocate;
   widget_class->expose_event = gtk_icon_view_expose;
