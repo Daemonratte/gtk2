@@ -22,8 +22,10 @@
 
 #include "config.h"
 #include <gtk/gtk.h>
-#ifdef GDK_WINDOWING_X11
+#if defined (GDK_WINDOWING_X11)
 #include "x11/gdkx.h"
+#elif defined (GDK_WINDOWING_WIN32)
+#include "win32/gdkwin32.h"
 #endif
 
 enum
@@ -266,8 +268,10 @@ create_child_plug (guint32  xid,
   gtk_widget_show_all (window);
 
   if (gtk_widget_get_realized (window))
-#ifdef GDK_WINDOWING_X11
+#if defined (GDK_WINDOWING_X11)
     return GDK_WINDOW_XID (window->window);
+#elif defined (GDK_WINDOWING_WIN32)
+    return (guint32) GDK_WINDOW_HWND (window->window);
 #endif
   else
     return 0;
