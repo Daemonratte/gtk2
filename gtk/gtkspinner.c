@@ -32,6 +32,7 @@
 #include "config.h"
 
 #include "gtkintl.h"
+#include "gtkaccessible.h"
 #include "gtkimage.h"
 #include "gtkspinner.h"
 #include "gtkstyle.h"
@@ -90,6 +91,7 @@ static void gtk_spinner_set_property   (GObject         *object,
                                         GParamSpec      *pspec);
 static void gtk_spinner_set_active     (GtkSpinner      *spinner,
                                         gboolean         active);
+static void *gtk_spinner_get_accessible      (GtkWidget *widget);
 
 static void
 gtk_spinner_class_init (GtkSpinnerClass *klass)
@@ -108,7 +110,7 @@ gtk_spinner_class_init (GtkSpinnerClass *klass)
   widget_class->unrealize = gtk_spinner_unrealize;
   widget_class->screen_changed = gtk_spinner_screen_changed;
   widget_class->style_set = gtk_spinner_style_set;
-  widget_class->get_accessible = NULL;
+  widget_class->get_accessible = gtk_spinner_get_accessible;
 
   /* GtkSpinner:active:
    *
@@ -377,6 +379,12 @@ gtk_spinner_set_active (GtkSpinner *spinner, gboolean active)
           gtk_spinner_remove_timeout (spinner);
         }
     }
+}
+
+static void *
+gtk_spinner_get_accessible (GtkWidget *widget)
+{
+  return GTK_WIDGET_CLASS (gtk_spinner_parent_class)->get_accessible (widget);
 }
 
 /**
