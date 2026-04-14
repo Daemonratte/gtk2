@@ -33,6 +33,8 @@
 #include <cairo-pdf.h>
 #include <cairo-ps.h>
 
+#include <glib/gi18n-lib.h>
+
 #include <gtk/gtkprintbackend.h>
 #include <gtk/gtkunixprint.h>
 #include <gtk/gtkprinter-private.h>
