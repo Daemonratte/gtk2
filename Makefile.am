@@ -1,18 +1,10 @@
 ## Makefile.am for GTK+
 include $(top_srcdir)/Makefile.decl
 
-SRC_SUBDIRS = gdk gtk
-
-if HAVE_PRINT
-SRC_SUBDIRS += printbackends
-endif
+SRC_SUBDIRS = gdk gtk printbackends
 
 if BUILD_TESTS
 SRC_SUBDIRS += tests
-endif
-
-if BUILD_PERF
-SRC_SUBDIRS += perf
 endif
 
 SUBDIRS = $(SRC_SUBDIRS) m4macros build

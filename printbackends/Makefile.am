@@ -19,6 +19,6 @@ SUBDIRS += tests
 endif
 
 
-DIST_SUBDIRS = $(SUBDIRS)
+DIST_SUBDIRS = cups file lpr papi tests
 
 -include $(top_srcdir)/git.mk
