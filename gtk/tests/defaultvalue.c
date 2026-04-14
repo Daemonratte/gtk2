@@ -362,9 +362,6 @@ main (int argc, char **argv)
       
       testname = g_strdup_printf ("/Default Values/%s",
 				  g_type_name (otypes[i]));
-#ifndef ENABLE_BROKEN_TESTS
-      if (strcmp(testname, "/Default Values/GdkPixbuf") && strcmp(testname, "/Default Values/GtkAccessible"))
-#endif
       g_test_add_data_func (testname,
                             &otypes[i],
 			    test_type);
