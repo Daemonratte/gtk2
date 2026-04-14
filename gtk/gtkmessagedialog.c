@@ -29,6 +29,7 @@
 #include <string.h>
 
 #include "gtkmessagedialog.h"
+#include "gtkaccessible.h"
 #include "gtkbuildable.h"
 #include "gtklabel.h"
 #include "gtkhbox.h"
