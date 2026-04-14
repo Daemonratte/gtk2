@@ -73,7 +73,7 @@ typedef void (*GdkEventFunc) (GdkEvent *event,
 /* Event filtering */
 
 typedef void GdkXEvent;	  /* Can be cast to window system specific
-			   * event type, XEvent on X11.
+			   * even type, XEvent on X11, MSG on Win32.
 			   */
 
 typedef enum {

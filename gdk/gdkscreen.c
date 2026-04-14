@@ -133,7 +133,8 @@ gdk_screen_class_init (GdkScreenClass *klass)
    * The ::monitors-changed signal is emitted when the number, size
    * or position of the monitors attached to the screen change. 
    *
-   * Only for X11 and OS X for now.
+   * Only for X11 and OS X for now. A future implementation for Win32
+   * may be a possibility.
    *
    * Since: 2.14
    */
