@@ -72,7 +72,9 @@ builder_SOURCES			 = builder.c
 builder_LDADD			 = $(progs_ldadd)
 builder_LDFLAGS			 = -export-dynamic
 
+if OS_UNIX
 TEST_PROGS			+= defaultvalue
+endif
 defaultvalue_SOURCES		 = defaultvalue.c pixbuf-init.c	
 defaultvalue_LDADD 		 = $(progs_ldadd)
 

@@ -39,3 +39,5 @@ docs
 examples
 
 demos
+
+tests
